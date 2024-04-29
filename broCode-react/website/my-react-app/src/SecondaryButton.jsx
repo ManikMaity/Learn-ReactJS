@@ -8,6 +8,7 @@ const style = {
     marginTop: "5px",
     cursor: "pointer",
     border : "1px solid #67c0f7",
+    marginLeft : "5px"
 }
 
 function SecondaryBtn(){
