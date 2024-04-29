@@ -96,3 +96,87 @@ function Food (){
     )
 }
 ```
+
+10. We can use `className=""` to set classes in element inside  return. Bcause `class` is a reserve name.
+```js
+return (
+        <div className="card">
+            <img alt="Profile Picture" src={profilePic}></img>
+            <h2>Mnaik Maity</h2>
+            <p>B.com (H) | I like development</p>
+        </div>
+    )
+```
+
+
+11. To use assets form `assets` folder we have to import that asset.
+```js
+import profilePic from "./assets/manik-maity.jpeg"
+```
+------------------------------------------
+
+## Adding css style to element i reactjs
+- External
+- Internal
+- Inline
+
+### 1. External
+- We can add style to a element in our `index.css` file.
+- External stylesheet is mostly used to set global style.
+- But is not efficient in large web app for naming and hard to maintain.
+```css
+.btn{
+  padding: 7px 20px;
+  background-color: rgb(103, 192, 247);
+  color: white;
+  border: none;
+````
+
+### 2. Module
+- In this will create a dedicated css stylesheet specific to a component.
+- We will create a dedicated file incide src for the component like `Button`.
+- Make/Move the .jsx component like- `button.jsx` inside that folder.
+- Inside the folder ex - `Button` we will make a stylesheet for the componed like named like `button.module.css`.
+- Write the styling like - 
+```css
+/*file - button.module.css*/
+.btn{
+    padding: 7px 20px;
+    background-color: rgb(103, 192, 247);
+    color: white;}
+```
+- Then we import the stylesheet to our component .jsx file 
+```js
+// file - button.jsx
+import style from "./button.module.css";
+```
+- And we have to add style classname from imported style to elenment className. like this
+```js
+<button className={style.btn}>Click me</button>
+```
+
+### 3. Inline
+- Inline css is used inside the component .jsx file by creation a style obj.
+- The use the style obj created in element style attribute.
+Ex. - 
+```js
+// ScondaryButton.jsx
+const style = {
+    padding: "7px 20px",
+    color: "white",
+    backgroundColor : "transparent",
+    fontWeight: "bold",
+    marginTop: "5px",
+    cursor: "pointer",
+    border : "1px solid #67c0f7",
+}
+
+function SecondaryBtn(){
+    return (
+        <button style={style}>About</button>
+    )
+}
+
+export default SecondaryBtn;
+```
+
