@@ -43,6 +43,7 @@ export default Header;
 
 ```
 3. Now we can import the header component within other components or our main `App.jsx` component like this:
+- Component func name should start with uppercase letter like this - `Header`, `Profile`
 ```js
 import Header from "./header.jsx";
 
@@ -159,6 +160,7 @@ import style from "./button.module.css";
 ### 3. Inline
 - Inline CSS is used inside the component `.jsx` file by creating a style object.
 - Then use the style object created in the element style attribute.
+- It good for small element and minimum styling but not mantainable for complex styling
 Ex. - 
 ```js
 // ScondaryButton.jsx
@@ -181,3 +183,151 @@ function SecondaryBtn(){
 export default SecondaryBtn;
 ```
 
+## Props 
+- These are read-only properties that are shared between components. A parent component can send data to a child component.
+- To use props, we have to pass props as a parameter for the component function. And we can use props' values in HTML.
+
+```js
+function student(props) {
+    return (
+        <div>
+            <p>Name: {props.name}</p>
+        </div>
+    );
+}
+```
+- We can set props value in the parent component like this:
+```js
+function App() {
+  return(
+    <>
+      <Student name="Manik"/>
+    </>
+  )
+}
+```
+- Besides strings, if we want to set value we have to use `{}` to pass value like this:
+```js
+    <>
+      <Student name="Manik" age={20} isStudent = {true}/>
+    </>
+```
+
+- We can just change the props value to make different HTML elements like this:
+```js
+    <>
+      <Student name="Manik" age={20} isStudent = {true}/>
+      <Student name="Suman" age={14} isStudent = {true}/>
+      <Student name="Ronit" age={21} isStudent = {true}/>
+      <Student name="Swapan" age={45} isStudent= {false}/>
+    </>
+```
+
+### Prop Types -
+- It is a mechanism to check the passed props value is required data type.
+- It is good practice to use prop types.
+- We have to import `prop-types` from the node module to the child component .jsx file.
+```js
+import propTypes from "prop-types";
+```
+
+- Then we can set prop type after the component function like this -
+```js
+import propTypes from "prop-types";
+
+function student(props) {
+    return (
+        <div className="studentCard">
+            <p>Name: {props.name}</p>
+            <p>Age : {props.age}</p>
+            <p>{props.isStudent? "He is a student" : "He is not a student"}</p>
+        </div>
+    );
+}
+
+student.propTypes = {
+    name : propTypes.string,
+    age : propTypes.number,
+    isStudent : propTypes.bool
+}
+
+export default student;
+```
+- Wrong prop type will not prevent the code from running. It will just give a warning in console.
+
+### Default props -
+- We can pass props, add them to the JSX, just like we would with HTML attributes.
+
+**Old way of setting default -**
+```js
+import propTypes from "prop-types";
+
+function student(props) {
+    return (
+        <div className="studentCard">
+            <p>Name: {props.name}</p>
+            <p>Age : {props.age}</p>
+            <p>{props.isStudent? "He is a student" : "He is not a student"}</p>
+        </div>
+    );
+}
+
+student.defaultProps = {
+    name : "Student",
+    age : "Null"
+}
+
+export default student;
+```
+
+**New way of declairing default -**
+```js
+// we just destructured the props obj to {url, size}
+export default function ProfileImg({url = "https://picsum.photos/200/300", size = 100}){
+    return (
+        <img src={url} alt="profile picture" height={size} width={size} />
+    )
+}
+```
+
+## Conditional rendaring
+ - We can conditionally render JSX using JavaScript syntax like `if` statements,` &&, and ? :` operators.
+
+ ### Using if else
+ ```js
+ function UserGreeting ({username = "User", isLogedIn = false}){
+    if (isLogedIn){
+        return (
+            <h1>Hi🙏, {username}.</h1>
+        )
+    }
+    else{
+        return (
+            <h1>Please log in {username} 🙏.</h1>
+        )
+    }
+}
+ ```
+
+ ```js
+    <UserGreeting username="Manik" isLogedIn = {false}/> //output - Please log in Manik 🙏.
+    <UserGreeting  isLogedIn = {true}/> // Hi🙏, User.
+
+ ```
+
+### using ternary operator
+```js
+return (
+        isLogedIn ? <h1>Hi, {username}.</h1> : <h1>Please log in.</h1>
+    )
+```
+
+**We can make the code more readable by storing the elements in a constant like this** 
+```js
+const welcomeEle =  <h1 className="user-message">Hi, {username}.</h1>;
+    const logInEle = <h1 className="login-message">Please log in.</h1>;
+    
+    return (
+        isLogedIn ? welcomeEle : logInEle
+    );
+```

@@ -42,16 +42,41 @@
 .card-text{
   font-size: 0.9rem;
 }
-#root{
+
+.studentCard{
   display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background-color: #111111ee;
+  color: white;
+  max-width: fit-content;
+  margin: 10px;
+  box-shadow: 5px 5px 10px #616161;
+  transition: all 0.3s;
+  cursor: pointer;
 }
 
-/* .btn{
-  padding: 7px 20px;
-  background-color: rgb(103, 192, 247);
-  color: white;
-  border: none;
-  font-weight: bold;
-  margin-top: 5px;
-  cursor: pointer;
-} */
+.studentCard:hover{
+  transform: scale(1.03);
+}
+
+.studentCard img {
+  border-radius: 50px;
+  margin: auto;
+  margin-bottom: 10px;
+  outline: 2px solid #fff;
+}
+
+.user-message, .login-message{
+  background-color: lightgreen;
+  margin: 20px;
+  padding: 5px 20px;
+  border-radius: 10px;
+}
+
+.login-message{
+  background-color: lightcoral;
+}
