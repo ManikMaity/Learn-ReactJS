@@ -2,7 +2,7 @@ import style from "./button.module.css";
 
 function Button (){
     return (
-        <button className={style.btn}>Click me</button>
+        <button id="My-btn" className={style.btn}>Click me</button>
     )
 }
 

@@ -1,19 +1,34 @@
 
 
-const style = {
-    padding: "7px 20px",
-    color: "white",
-    backgroundColor : "transparent",
-    fontWeight: "bold",
-    marginTop: "5px",
-    cursor: "pointer",
-    border : "1px solid #67c0f7",
-    marginLeft : "5px"
-}
+function SecondaryBtn({text = ""}){
 
-function SecondaryBtn(){
+    const changeName = (e) => {
+        e.target.innerText = "Its works🙀";
+        e.target.style.backgroundColor = "darkgreen";
+    }
+
+    const getTime = (e, date = "") => {
+        const time = new Date ();
+        let text;
+        if (date == "time"){
+            text = time.toLocaleTimeString();
+        }
+        else {
+            text = time.toLocaleDateString();
+        }
+        e.target.innerText = text + " 📅";
+        e.target.style.backgroundColor = "darkgreen";
+    }
+
+    const reset = (e) => {
+        e.target.textContent = "Click me😸";
+        e.target.style.backgroundColor = "#42b7ff";
+    }
+
+
+
     return (
-        <button style={style}>About</button>
+        <button onClick={reset}  onDoubleClick={(e) => {getTime(e, text)}} className="secondaryBtn">Click me😸</button>
     )
 }
 

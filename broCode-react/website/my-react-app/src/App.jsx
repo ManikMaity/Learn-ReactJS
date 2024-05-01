@@ -1,11 +1,12 @@
-import UserGreeting from "./UserGreeting.jsx"
+import ProfilePic from "./ProfilePic.jsx"
+import SecondaryBtn from "./SecondaryButton.jsx"
 
 function App() {
 
   return(
     <>
-    <UserGreeting username="Manik" isLogedIn = {true}/>
-    <UserGreeting  isLogedIn = {false}/>
+     <SecondaryBtn/>
+     <SecondaryBtn text="time"/>
     </>
   )
 }

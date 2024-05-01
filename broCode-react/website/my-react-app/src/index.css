@@ -4,6 +4,9 @@
   box-sizing: border-box;
   font-family: monospace, sans-serif;
 }
+body{
+  background-color: #111111ee;
+}
 
 .card img {
   height: 80px;
@@ -79,4 +82,45 @@
 
 .login-message{
   background-color: lightcoral;
+}
+
+ul{
+  list-style:square;
+  margin: auto;
+  padding: 20px;
+}
+
+hr{
+  margin: 20px 0px;
+}
+
+.day{
+  background-color: rgb(179, 116, 0);
+  color: whitesmoke;
+}
+
+.neight{
+  background-color: #131313;
+  color: whitesmoke;
+}
+
+.secondaryBtn{
+  font-size: 1rem;
+  padding: 7px 20px;
+  background-color: #42b7ff;
+  color: white;
+  border: none;
+  font-weight: bold;
+  margin: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.secondaryBtn:hover{
+  background-color: #004e7f;
+}
+
+.profile-img{
+  width: 150px;
+  margin-top: 15px;
 }
