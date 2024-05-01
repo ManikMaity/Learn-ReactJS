@@ -2,6 +2,14 @@
 
 [Video Link](https://youtu.be/CgkZ7MvWUAA?si=S6yKIIdnOrdAkXYc)
 
+## Index
+- [How to set up react](#how-to-set-up-react)
+- [Folder structure](#folder-structure)
+- [Components](#components)
+- [Adding CSS style to elements in ReactJS](#adding-css-style-to-element-in-reactjs)
+- [Props](#props)
+- [Conditional rendering](#conditional-rendering)
+
 ## Points 
 - React works in JSX, which means JavaScript XML.
 - React works with components.
@@ -116,7 +124,7 @@ import profilePic from "./assets/manik-maity.jpeg"
 ```
 ------------------------------------------
 
-## Adding css style to element i reactjs
+## Adding css style to element in reactjs
 - External
 - Internal
 - Inline
@@ -290,7 +298,7 @@ export default function ProfileImg({url = "https://picsum.photos/200/300", size 
 }
 ```
 
-## Conditional rendaring
+## Conditional rendering
  - We can conditionally render JSX using JavaScript syntax like `if` statements,` &&, and ? :` operators.
 
  ### Using if else
