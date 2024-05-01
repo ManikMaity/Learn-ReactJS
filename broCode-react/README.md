@@ -9,6 +9,9 @@
 - [Adding CSS style to elements in ReactJS](#adding-css-style-to-element-in-reactjs)
 - [Props](#props)
 - [Conditional rendering](#conditional-rendering)
+- [Rendering Lists](#rendering-lists)
+- [Keeping Components Pure](#keeping-components-pure)
+- [Click Events](#click---events)
 
 ## Points 
 - React works in JSX, which means JavaScript XML.
@@ -338,4 +341,181 @@ const welcomeEle =  <h1 className="user-message">Hi, {username}.</h1>;
     return (
         isLogedIn ? welcomeEle : logInEle
     );
+```
+
+
+## Rendering Lists
+- We can loop through array data and can make list items.
+- To render all components we use `map()`.
+- To render specific items we use `filter()`.
+
+
+### Render all list items - map()
+
+```jsx
+function List({arr = []}){
+    const listItems = arr.map((text) => <li>{text}</li>);
+    return (
+        <ul>
+            {listItems}
+        </ul>
+    );
+}
+```
+```js
+function App() {
+  
+ const names = [
+  'Creola Katherine Johnson: mathematician',
+  'Mario José Molina-Pasquel Henríquez: chemist',
+  'Mohammad Abdus Salam: physicist',
+  'Percy Lavon Julian: chemist',
+  'Subrahmanyan Chandrasekhar: astrophysicist'
+];
+
+const peoples = [{
+  id: 0,
+  name: 'Creola Katherine Johnson',
+  profession: 'mathematician',
+}, {
+  id: 1,
+  name: 'Mario José Molina-Pasquel Henríquez',
+  profession: 'chemist',
+}, {
+  id: 2,
+  name: 'Mohammad Abdus Salam',
+  profession: 'physicist',
+}, {
+  id: 3,
+  name: 'Percy Lavon Julian',
+  profession: 'chemist',  
+}, {
+  id: 4,
+  name: 'Subrahmanyan Chandrasekhar',
+  profession: 'astrophysicist',
+}];
+
+  return(
+    <>
+      <List arr={names}/>
+    </>
+  )
+}
+```
+
+
+### Filtering arrays of items  - filter()
+- To filter array and render them in list we firstly have to use `.filter()` method to filter out desired array items.
+- Then we can use `.map()` to render filtered array to html like previously.
+
+
+```jsx 
+function FilteredList({array = [], filterItem = ""}){
+    let filterdArray = array;
+if (filterItem){
+     filterdArray = array.filter(person => person.profession == filterItem);
+}
+    // eslint-disable-next-line react/jsx-key
+    const listItems = filterdArray.map(person =>  <li>
+        <img
+          src={getImageUrl(person)}
+          alt={person.name}
+        />
+        <p>
+          <b>{person.name}:</b>
+          {' ' + person.profession + ' '}
+          known for {person.accomplishment}
+        </p>
+      </li>);
+
+    return (
+        <ul>
+            {listItems}
+        </ul>
+    )
+}
+
+export default FilteredList;
+```
+```js
+ <FilteredList array={people} filterItem="chemist"/>
+```
+
+**Keeping list items in order with key-**
+- We have to set a unique key for each array item
+- It helps in inserting and deleting specific items.
+- It will remove the warning in console.
+
+```js
+//key 
+const listItems = filterdArray.map(person =>  <li key={person.id}>
+        <img
+          src={getImageUrl(person)}
+          alt={person.name}
+        />
+        <p>
+          <b>{person.name}:</b>
+          {' ' + person.profession + ' '}
+          known for {person.accomplishment}
+        </p>
+      </li>);
+```
+
+## Keeping Components Pure
+
+### Pure function
+- Don't change any object or variable
+- In the same input it gives the same output.
+- Below func is a pure function if we pass 2 it will give 4, if 3 passed it gives 6
+
+```js
+function double(number) {
+  return 2 * number;
+}
+```
+
+### Unpure function 
+- Calling this component multiple times will produce different JSX!
+```js
+let i = 0;
+function Unpure (){
+    i++;
+    return (
+        <h1>This is a unpure function for Recatjs {i}</h1>
+    );
+}
+export default Unpure;
+```
+- Instead of an impure function we can use props to get the same result but predictable.
+```js
+function Pure ({num = 0}){
+    return (
+        <h1>This is a pure function #{num}</h1>
+    );
+}
+export default Pure;
+```
+
+## Click - events
+- Click events are like event listener in react;
+- We can set a click event to an element by using `onClick` and other events like `onDoubleClick`;
+- We have to declare the event function inside .jsx component function and set it to the element like this -
+
+```js
+function SecondaryBtn(){
+    const changeName = (e) => {
+        e.target.innerText = "Its works🙀";
+        e.target.style.backgroundColor = "darkgreen";
+    }
+    return (
+        <button onClick={changeName} className="secondaryBtn">About</button>
+    )
+}
+```
+
+- we can pass arguments to the event function like this - put the function inside another func
+```js
+return (
+        <button onClick={(e) => {getTime(e, "time")}} className="secondaryBtn">Click me😸</button>
+    )
 ```

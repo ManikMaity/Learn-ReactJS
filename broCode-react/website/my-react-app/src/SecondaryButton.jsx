@@ -1,7 +1,9 @@
 
 
+// eslint-disable-next-line react/prop-types
 function SecondaryBtn({text = ""}){
 
+    // eslint-disable-next-line no-unused-vars
     const changeName = (e) => {
         e.target.innerText = "Its works🙀";
         e.target.style.backgroundColor = "darkgreen";
