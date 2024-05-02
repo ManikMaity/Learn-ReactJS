@@ -2,10 +2,15 @@ import profilePic from "./assets/manik-maity.jpeg"
 import Button from "./Button/button.jsx";
 import SecondaryBtn from "./SecondaryButton.jsx";
 
+
+
 function Card (){
-     // for card used gloabl styling 
-     // for button one used module styling
-     // for button two used inline styling
+
+    const lightMode = () => {
+        document.querySelector(".card").classList.toggle("darkCard");
+    }
+
+
     return (
        
         <div className="card">
@@ -13,8 +18,7 @@ function Card (){
             <h2 className="card-title">Manik Maity</h2>
             <p className="card-text">B.com (H) | I like development</p>
             <div>
-            <Button/>
-            <SecondaryBtn/>
+            <Button func={lightMode}/>
             </div>
 
         </div>

@@ -1,13 +1,18 @@
 // eslint-disable-next-line no-unused-vars
-import ProfilePic from "./ProfilePic.jsx"
-import SecondaryBtn from "./SecondaryButton.jsx"
+import Card from "./Card.jsx"
+import Counter from "./Counter.jsx"
+import ScupltureGallery from "./SculptureGallery.jsx"
+import MyComponent from "./myComponent.jsx"
+
 
 function App() {
 
   return(
     <>
-     <SecondaryBtn/>
-     <SecondaryBtn text="time"/>
+      <Card/>
+      <MyComponent/>
+      <Counter/>
+      <ScupltureGallery/>
     </>
   )
 }

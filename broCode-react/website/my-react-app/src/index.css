@@ -16,7 +16,7 @@ body{
   border: 2px solid #fff;
 }
 
-.card {
+.card, .counter {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,8 +31,13 @@ body{
   box-shadow: 5px 5px 10px #616161;
   transition: all 0.3s;
   cursor: pointer;
-  
 }
+
+.darkCard{
+  background-color: #e9e9e9;
+  color: #252525;
+}
+
 
 .card:hover{
   transform: scale(1.03);
@@ -123,4 +128,50 @@ hr{
 .profile-img{
   width: 150px;
   margin-top: 15px;
+}
+
+.reuseBtn{
+  font-size: 1rem;
+  padding: 7px 20px;
+  background-color: transparent;
+  border: 1px solid #42b7ff;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.reuseBtn:hover{
+  background-color: #42b7ff;
+}
+
+.btn-container {
+  display: flex;
+  gap: 10px;
+}
+
+.counter h1{
+  font-size: 4rem;
+}
+
+.scupture-gallery{
+  background-color: #131313;
+  margin: 10px 20px;
+  padding: 15px;
+  color: whitesmoke;
+  border-radius: 10px;
+  max-width: 600px;
+  border: 2px solid whitesmoke;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.scupture-gallery h2{
+  font-weight: bolder;
+}
+
+.scupture-gallery img{
+  max-height: 200px;
+  width: min-content;
 }

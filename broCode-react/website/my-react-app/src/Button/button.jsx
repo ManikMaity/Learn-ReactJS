@@ -1,9 +1,11 @@
 import style from "./button.module.css";
+function Button ({func}){
 
-function Button (){
     return (
-        <button id="My-btn" className={style.btn}>Click me</button>
+        <button onClick={(e) => {
+            e.stopPropagation();
+            func()
+        }} id="My-btn" className={style.btn}>Click me</button>
     )
 }
-
 export default Button;

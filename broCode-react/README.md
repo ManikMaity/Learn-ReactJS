@@ -519,3 +519,75 @@ return (
         <button onClick={(e) => {getTime(e, "time")}} className="secondaryBtn">Click me😸</button>
     )
 ```
+
+### Click events extra - from react.dev
+- we can pass the clild elements event func as a prop.
+```js
+import style from "./button.module.css";
+function Button ({lightMode}){
+
+    return (
+        <button onClick={(e) => {
+            e.stopPropagation();
+            lightMode()
+        }} id="My-btn" className={style.btn}>Click me</button>
+    )
+}
+export default Button;
+```
+
+## Use State - react hooks
+
+### React hooks
+- Hooks allow function components to have access to state and other React features. 
+- Example of react hooks are useState, useEffect, useContext, useReducer, useCallback etc..more
+
+
+### Use State - 
+- Using use state we can make variaable when updated will update the Vertula DOM too.
+- Normal variable when updated dont show in DOM react.
+
+### How to use 
+- we have to make a function based component.
+- have to import specific hooks needed form react library.
+```js
+    import { useState } from "react";
+    
+    function MyComponent (){
+      return (
+        <h1>HI</h1>
+      )
+    }
+
+    export default MyComponent;
+```
+
+- then have to useState() method incide the function which return a array.
+- we have destructured the array to a vaibale ex- `name` and a function ex- `setName`.
+- we can pass initial value in useSate(initial value).
+- in my case `name` store the variable and `setName`method update the variable.
+```js
+function MyComponent() {
+
+    let [name, setName] = useState('Manik');
+    const names = ["Suman", "Swapan", "Tapan", "User"];
+
+    const changeName = () => {
+        let newName = Math.floor(Math.random()*4);
+        name = names[newName];
+        setName(name);
+        console.log(name)
+    }
+
+    return (
+    <div style={style}>
+         <h1>Hi, {name}</h1>
+         <Button func={changeName}/>
+    </div>
+   
+);
+}
+export default MyComponent;
+```
+
+## onChange -  event handeler 
