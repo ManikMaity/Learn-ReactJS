@@ -12,6 +12,8 @@
 - [Rendering Lists](#rendering-lists)
 - [Keeping Components Pure](#keeping-components-pure)
 - [Click Events](#click---events)
+- [React Hooks](#react-hooks)
+- [useState](#use-state)
 
 ## Points 
 - React works in JSX, which means JavaScript XML.
@@ -521,7 +523,7 @@ return (
 ```
 
 ### Click events extra - from react.dev
-- we can pass the clild elements event func as a prop.
+- We can pass the child elements' event function as a prop.
 ```js
 import style from "./button.module.css";
 function Button ({lightMode}){
@@ -536,20 +538,18 @@ function Button ({lightMode}){
 export default Button;
 ```
 
-## Use State - react hooks
-
-### React hooks
-- Hooks allow function components to have access to state and other React features. 
-- Example of react hooks are useState, useEffect, useContext, useReducer, useCallback etc..more
+## React hooks
+- Hooks allow function components to have access to state and other React features.
+- Examples of react hooks are useState, useEffect, useContext, useReducer, useCallback, etc.
 
 
-### Use State - 
-- Using use state we can make variaable when updated will update the Vertula DOM too.
-- Normal variable when updated dont show in DOM react.
+## Use State - 
+- Using useState, we can make variables that, when updated, will update the virtual DOM too.
+- Normal variables when updated don't show in the DOM react.
 
 ### How to use 
-- we have to make a function based component.
-- have to import specific hooks needed form react library.
+- We have to make a function-based component.
+- We have to import specific hooks needed from the React library.
 ```js
     import { useState } from "react";
     
