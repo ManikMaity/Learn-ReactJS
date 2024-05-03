@@ -14,6 +14,10 @@
 - [Click Events](#click---events)
 - [React Hooks](#react-hooks)
 - [useState](#use-state)
+- [onChange - event handler](#onchange---event-handeler)
+- [Making a color picker - mini project](#making-a-color-picker--mini-project)
+- [Updater Function](#updater-function)
+- [Update Objects in state](#update-objects-in-state)
 
 ## Points 
 - React works in JSX, which means JavaScript XML.
@@ -592,24 +596,24 @@ export default MyComponent;
 
 ## onChange - event handeler 
 - This event captures the changes in an Input Field and executes the handler function.
-- In mostly used input, textarea, select, radio
-- To use onChange event we have to used useState to make a varibale.
+- Mostly used in input, textarea, select, radio.
+- To use onChange event, we have to use useState to make a variable.
 ```js
     let [name, setName] = useState("cake");
 ```
-- Then we will make func which set the e.target.value to update the state variable.
+- Then we will make a function which sets the `e.target.value` to update the state variable.
 ```js
     const handleNameChange = (e) => {
         setName(e.target.value);
     }
 ```
-- we will pass this func to onChange attribute of our input element.
+- We will pass this function to the `onChange` attribute of our input element.
 ```js
     <input value={name} onChange={handleNameChange}/>
     <h2>Name: {name}</h2>
 ```
 
-- Diffrent input elememts have different logic to use onChange with state.
+- Different input elements have different logic to use onChange with state.
 
 
 ## Making a color picker- mini project
@@ -664,3 +668,61 @@ export default ColorPicker;
   <source src="../readmeAssets/WhatsApp Video 2024-05-03 at 19.44.30_bc0c1ce7.mp4" type="video/mp4">
   Your browser does not support HTML video.
 </video>
+
+## Updater Function
+- In React, an updater function is a function that is passed as an argument to the `setState()` function.
+- It is used to update the previous state, and it is also used for multiple state updates and async functions.
+- It is a best practice.
+
+```js
+const [count, setCount] = useState(0);
+
+    function incrementCount () {
+        setCount(count + 1);
+        setCount(count + 1);
+
+    }
+```
+- In this case, you might think `incrementCount` will update the state + 2.
+- But it will not because React doesn't update immediately, so only +1.
+- That's why we need an updater function, it's an arrow function.
+```js
+function incrementCount () {
+        setCount(c => c + 1);
+        setCount(c => c + 1);
+    }
+```
+- This will work now. Named `c` because it is the first letter of the `count` variable. And `c` represents the previous `count`, not the current.
+
+## Update Objects in state
+- Firstly, we will make a state object variable.
+```js
+  const [car, setCar] = useState({
+    year: 2024,
+    make: "ford",
+    model: "Mustang",
+  });
+```
+- But if we want to change the year from input field using onChange func like this -
+```js
+function handleYearChange (e) {
+    setCar({year : e.target.value});
+  }
+```
+```js
+<input type="number" value={car.year} onChange={handleYearChange}/>
+```
+- It will set a new object `{ year: value }` to the state variable. So, `make` and `model` will be removed.
+- Because of this, we have to use the spread operator `{...obj}` like below to set value -
+```js
+function handleYearChange (e) {
+    setCar({...car, year : e.target.value});
+  }
+```
+- This will set the variable to a new object where only the year value changed.
+- We can change this to an arrow function for best practices.
+```js
+function handleYearChange (e) {
+    setCar(c => ({...car, year : e.target.value}));
+  }
+```

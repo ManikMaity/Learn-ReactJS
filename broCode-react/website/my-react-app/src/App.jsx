@@ -1,14 +1,12 @@
-import ColorPicker from "./ColorPicker.jsx"
-import OnChangeExample from "./OnChangeExample.jsx"
-import Counter from "./Counter.jsx"
+import Counter2 from "./Counter2.jsx"
+import UpdateObjState from "./UpdateObjState.jsx"
+
 
 function App() {
 
   return(
     <>
-    {/* <OnChangeExample/>
-    <ColorPicker/> */}
-    <Counter/>
+    <UpdateObjState/>
     </>
   )
 }
