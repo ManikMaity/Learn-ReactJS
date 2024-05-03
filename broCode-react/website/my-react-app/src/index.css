@@ -26,22 +26,63 @@ body{
   border: 2px solid #fff;
   background-color: #111111ee;
   color: white;
-  max-width: fit-content;
+  width: fit-content;
+  max-width: 600px;
   margin: 10px;
   box-shadow: 5px 5px 10px #616161;
   transition: all 0.3s;
+}
+.card input, .card textarea{
+  padding: 5px 10px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+input[type="radio"]{
+  width: min-content;
+}
+
+.color{
+  height: 150px;
+  width: 150px;
+  background-color: #4cc971;
+  border-radius: 50px;
+  display: grid;
+  place-content: center;
+  font-weight: bold;
+  transition: 0.8s ease;
   cursor: pointer;
 }
+
+.picker-control{
+  display: flex;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.picker-control input{
+  padding: 0;
+  margin: 0;
+  height: 30px;
+  width: 30px;
+}
+
 
 .darkCard{
   background-color: #e9e9e9;
   color: #252525;
 }
 
-
-.card:hover{
-  transform: scale(1.03);
+button{
+  transition: 0.8s ease;
 }
+
+button:hover{
+opacity: 0.6;
+}
+
+
 
 .card-title{
   color: lightskyblue;

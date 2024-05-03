@@ -543,7 +543,7 @@ export default Button;
 - Examples of react hooks are useState, useEffect, useContext, useReducer, useCallback, etc.
 
 
-## Use State - 
+## Use State 
 - Using useState, we can make variables that, when updated, will update the virtual DOM too.
 - Normal variables when updated don't show in the DOM react.
 
@@ -590,4 +590,77 @@ function MyComponent() {
 export default MyComponent;
 ```
 
-## onChange -  event handeler 
+## onChange - event handeler 
+- This event captures the changes in an Input Field and executes the handler function.
+- In mostly used input, textarea, select, radio
+- To use onChange event we have to used useState to make a varibale.
+```js
+    let [name, setName] = useState("cake");
+```
+- Then we will make func which set the e.target.value to update the state variable.
+```js
+    const handleNameChange = (e) => {
+        setName(e.target.value);
+    }
+```
+- we will pass this func to onChange attribute of our input element.
+```js
+    <input value={name} onChange={handleNameChange}/>
+    <h2>Name: {name}</h2>
+```
+
+- Diffrent input elememts have different logic to use onChange with state.
+
+
+## Making a color picker- mini project
+
+### Code
+```jsx
+import { useState } from "react";
+import ReuseButton from "./ReuseButton.jsx";
+
+function ColorPicker() {
+  const [color, setColor] = useState("#000000");
+
+  const style = {
+    backgroundColor: color,
+    border: "none",
+    border: "1px solid #fff",
+  };
+
+  const handleColorChange = (e) => {
+    setColor(e.target.value);
+  };
+
+  const randomHexCode = () => {
+    let hexCode = Math.floor(Math.random() * 16777215).toString(16);
+    setColor(`#${hexCode}`);
+  };
+
+  return (
+    <div className="card">
+      <h2>Color Picker</h2>
+      <div className="color" style={style}>
+        <p>{color}</p>
+      </div>
+
+      <div className="picker-control">
+        <input
+          type="color"
+          onChange={handleColorChange}
+          value={color}
+          id="colorSelect"
+        />
+        <ReuseButton func={randomHexCode} text="Random?" style={style} />
+      </div>
+    </div>
+  );
+}
+
+export default ColorPicker;
+```
+### Output
+<video width="100%" controls>
+  <source src="../readmeAssets/WhatsApp Video 2024-05-03 at 19.44.30_bc0c1ce7.mp4" type="video/mp4">
+  Your browser does not support HTML video.
+</video>
