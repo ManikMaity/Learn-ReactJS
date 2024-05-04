@@ -3,7 +3,7 @@
 function ReuseButton ({func, text = "Click", style = {}}){
 
     return (
-        <button style={style} onClick={func} className="reuseBtn">{text}</button>
+        <button type="submit" style={style} onClick={func} className="reuseBtn">{text}</button>
     )
 }
 

@@ -216,3 +216,27 @@ hr{
   max-height: 200px;
   width: min-content;
 }
+
+
+.todo-item{
+  cursor: pointer;
+  background-color: #000;
+  margin: 5px 0px;
+}
+
+.phoneCards-container{
+  width: 100%;
+}
+
+.phoneCard-item{
+  background-color: #252525;
+  width: 100%;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  margin-bottom: 10px;
+  cursor: pointer;
+}

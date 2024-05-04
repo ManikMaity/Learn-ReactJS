@@ -18,6 +18,8 @@
 - [Making a color picker - mini project](#making-a-color-picker--mini-project)
 - [Updater Function](#updater-function)
 - [Update Objects in state](#update-objects-in-state)
+- [Update Array/List Items in state](#update-arraylist-items-in-state)
+- [Update Array Of Objects in state](#update-array-of-objects-in-state)
 
 ## Points 
 - React works in JSX, which means JavaScript XML.
@@ -726,3 +728,72 @@ function handleYearChange (e) {
     setCar(c => ({...car, year : e.target.value}));
   }
 ```
+
+## Update Array/List Items in state
+- First, we make a useState hook with an initial array.
+```js
+const [todo, setTodo] = useState(["First todo"]);
+```
+- Then make list items from that array
+- `map` automatically takes two parameters: item and its index.
+```js
+let listItemHtml = todo.map((item, index) => <li className="todo-item" onDoubleClick={() => handleDeleteItem(index)} key={index}>{item}</li>)
+```
+- To add items to the array, we can use the `spread operator` as we did with objects.
+```js
+ const handleAddTodo = (e) => {
+        e.preventDefault();
+        const inputBox = document.getElementById("todoInput");
+        const inputBoxValue = inputBox.value;
+        if (inputBoxValue != ""){
+            setTodo(t => [...todo, inputBoxValue]);
+            inputBox.value = "";
+        }
+    }
+
+```
+
+```js
+const handleDeleteItem = (i) => {
+    setTodo(t => (todo.filter((item, index) => index != i)));
+  }
+```
+
+## Update Array Of Objects in state
+- To update an array of objects, we will make a state variable with an empty array.
+```js
+    const [phones, setPhones] = useState([]);
+```
+- Then we have to make a state variable for each key of the array like this -
+```js
+    const [year, setYear] = useState(new Date().getFullYear());
+    const [brand, setBrand] = useState("");
+    const [model, setModel] = useState("");
+```
+- Now we can update the key state variable value if we want (ex- in onChange)-
+```js
+const handleChangeYear = (e) => {
+    setYear(e.target.value);
+}   
+```
+- From the key state value, we can add a new object to the object array using set and spread on the event -
+```js
+const handleAddPhone = () => {
+    if (year != "" && brand != "" && model != ""){
+        const newPhone = {
+            brand : brand,
+            model : model,
+            year : year
+        }
+        setBrand("");
+        setYear(new Date().getFullYear());
+        setModel("");
+        setPhones(p => [...phones, newPhone]);
+
+    }
+}
+```
+
+- Made add phone list mini project - adding and deleting an array of obj functionality
+
+## To Do List - mini project
