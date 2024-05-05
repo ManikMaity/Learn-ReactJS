@@ -27,7 +27,7 @@ body{
   background-color: #111111ee;
   color: white;
   width: fit-content;
-  max-width: 600px;
+  max-width: 500px;
   margin: 10px;
   box-shadow: 5px 5px 10px #616161;
   transition: all 0.3s;
@@ -239,4 +239,105 @@ hr{
   border: 1px solid #fff;
   margin-bottom: 10px;
   cursor: pointer;
+}
+ul.task-list{
+  width: 100%;
+  padding: 10px 0;
+}
+
+.todo-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background-color: #111111ee;
+  color: white;
+  width: fit-content;
+  max-width: 500px;
+  margin: 10px;
+  box-shadow: 5px 5px 10px #616161;
+  transition: all 0.3s;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.todo-card input, .todo-card textarea{
+  padding: 5px 10px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.main-taskcontainer{
+  background-color: #191919;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+.task-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-btn-container{
+  display: flex;
+  gap: 10px;
+}
+
+.task-detail p{
+  font-size: 0.9em;
+  margin-top: 3px;
+}
+
+.task-btn-container button, .list-heading button{
+  background-color: #2b2b2b;
+  border: 1px solid #fff;
+  height: 100%;
+  width: auto;
+  font-size: 1.2rem;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  .task-btn-container button, .list-heading button{
+    font-size: 0.8rem;
+  }
+  .todo-card{
+    width: 90%;
+  }
+}
+
+.task-des{
+  display: none;
+  margin-top: 10px;
+  background-color: #282828;
+  padding: 10px;
+}
+
+.show{
+  display: block;
+}
+
+.list-heading{
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+.list-heading button{
+  position: absolute;
+  right: 15px;
 }

@@ -12,3 +12,4 @@
 | **Day 04**      | Bro Code Channel, React.dev                   | <ul><li>React hooks basics</li><li>useState hook</li></ul>              |Made Sculpture Gallery, Counter, Dark Mode               |
 |**Day 05**|Bro Code Channel|<ul><li>onChange - event handler</li><li>Updater Function</li><li>Update Objects in state</li></ul>|Made color picker mini project|
 |**Day 06**|Bro Code Channel|<ul><li>Update Array/List Items in state</li><li>Update Array Of Objects in state</li></ul>|Made a simlpe todo and Add phone list |
+|**Day 07**|Bro Code Channel|<ul><li>Todo app project</li><li>Deploy React Project</li></ul>|Nothing|

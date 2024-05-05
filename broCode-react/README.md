@@ -20,6 +20,8 @@
 - [Update Objects in state](#update-objects-in-state)
 - [Update Array/List Items in state](#update-arraylist-items-in-state)
 - [Update Array Of Objects in state](#update-array-of-objects-in-state)
+- [Todo App Project](#to-do-list-project)
+- [Deploy react project](#deploy-react-project)
 
 ## Points 
 - React works in JSX, which means JavaScript XML.
@@ -796,4 +798,68 @@ const handleAddPhone = () => {
 
 - Made add phone list mini project - adding and deleting an array of obj functionality
 
-## To Do List - mini project
+## To Do List project
+
+### Issue 1 solved - 
+#### Issue:
+Deleting tasks doesn't update localStorage correctly. One deletion may not reflect, and refreshing after deleting multiple tasks often leaves one task undeleted.
+
+#### Explanation:
+Due to asynchronous state updates, localStorage updates might occur before the state fully updates, resulting in incorrect data storage.
+
+#### Solution:
+Call the localStorage update within the `setTasks` callback to ensure it operates on the updated state.
+
+```js
+const handleDeleteTask = (i) => {
+    setTasks(prevTasks => {
+        const updatedTasks = prevTasks.filter((_, index) => index !== i);
+        updateLocalStorage(updatedTasks);
+        return updatedTasks;
+    });
+}
+```
+### Issue 2 solved - 
+
+#### Issue -
+How to rearrange tasks by moving them up and down using "👆" and "👇" buttons.
+
+#### Solution - 
+- Used spread operator to copy all task array.
+- Then used array destructuring to reposition the array item with its neighboring item.
+#### For Up
+```js
+const handleTaskUp = (i) => {
+    if (i > 0){
+        let updatedTasks = [...tasks];
+        [updatedTasks[i], updatedTasks[i - 1]] = [updatedTasks[i - 1], updatedTasks[i]] //repositioned
+        setTasks(precTask => {
+            updateLocalStorage(updatedTasks)
+            return updatedTasks;
+        });
+    }
+}
+```
+
+#### For Down 
+```js
+const handleTaskDown = (i) => {
+    if (i < tasks.length - 1){
+        let updatedTasks = [...tasks];
+        [updatedTasks[i], updatedTasks[i + 1]] = [updatedTasks[i + 1], updatedTasks[i]] //repositioned
+        setTasks(precTask => {
+            updateLocalStorage(updatedTasks)
+            return updatedTasks;
+        });
+    }
+}
+```
+
+### Todo app code here - [Todo.jsx](./website/my-react-app/src/TodoList.jsx)
+### Todo app live website here - [Live website](https://todoapp-react-manik.netlify.app/)
+
+## Deploy react project
+- To deploy a react project, run `npm run build` in the terminal.
+- This will convert our whole react project to HTML, CSS, and JS code files.
+- This will create a `dist` folder with code files and assets inside.
+- We can deploy the `dist` folder on Netlify manually to deploy the project.

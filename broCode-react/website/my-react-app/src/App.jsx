@@ -10,9 +10,9 @@ function App() {
     <>
     {/* <UpdateListStateExample/> */}
     <br></br>
-    <UpdateArrOfObjExample/>
+    {/* <UpdateArrOfObjExample/> */}
     <br />
-    {/* <TodoList/> */}
+    <TodoList/>
     </>
   )
 }
