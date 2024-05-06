@@ -22,6 +22,9 @@
 - [Update Array Of Objects in state](#update-array-of-objects-in-state)
 - [Todo App Project](#to-do-list-project)
 - [Deploy react project](#deploy-react-project)
+- [useEffect React Hook](#useeffect-react-hook)
+- [Digital clock - Mini project](#digital-clock---mini-project)
+- [useContext - hook](#usecontext---hook)
 
 ## Points 
 - React works in JSX, which means JavaScript XML.
@@ -866,41 +869,41 @@ const handleTaskDown = (i) => {
 
 ## useEffect React Hook
 - The useEffect Hook allows you to perform side effects in your components.
-- For example useEffect do some codes when component re-render, when state value change., etc.
+- For example, useEffect does some codes when the component re-renders, when state value changes, etc.
 ```js
 useEffect(<function>, <dependency>)
 ```
 ### Uses 
-- Event listener
 - DOM Manipulation
-- Subcriptions (realtime update)
+- Event listener
+- Subscriptions (real-time updates)
 - Fetching data from API
-- Cleanup unmount componnent.
+- Cleanup on unmounting the component.
 
 **Mounting** - Adding a component to the DOM.
 **Unmounting**  - Removing a component to the DOM.
 
 ### useEffect Explanation - 
-- Firstly we have to import the useEffect from react.
+- Firstly, we have to import the useEffect from react.
 ```js
 import { useEffect, useState } from "react";
 ```
-- Then we can use useEffect like this incide our component function
+- Then we can use useEffect inside our component function like this:
 ```js
   useEffect(() => {
     document.title = `Count ${count}`;
   });
 ```
-- Above code will change the website title whenever count update.
-- We can set dependencies by passing a array after the callback inside useEffect.
-- if we pass [] empty array that mean the use effect callback run once.
+- Above code will change the website title whenever count updates.
+- We can set dependencies by passing an array after the `callback` inside `useEffect`.
+- If we pass `[]` an empty array, that means the useEffect callback runs only once.
 ```js
   useEffect(() => {
     document.title = `Count ${count}`;
   }, []);
 ```
-- If we pass count inside that array that means useEffect callback only if count inside array change.
-- That is why in the below code the title will not update on change color even we pass color inside the callback;
+- If we pass count inside that array, that means useEffect callback only runs if count inside the array changes.
+- That is why in the below code the title will not update on change color even we pass color inside the callback:
 ```js
   const [count, setCount] = useState(0);
   const [color, setColor] = useState("#317a4c")
@@ -913,7 +916,7 @@ import { useEffect, useState } from "react";
     setColor(c => c == "#317a4c" ? "#453461" : "#317a4c");
   }
 ```
-- But if we pass the color in the useEffect array the title will update on change color.
+- But if we pass the color in the useEffect array, the title will update on change color.
 ```js
   useEffect(() => {
     document.title = `Count ${count}, Color ${color}`;
@@ -922,7 +925,7 @@ import { useEffect, useState } from "react";
 ```
 
 ### Mini project - windown resize text
-- If we just add the event listener inside the componet function it will add same event listener many time whenever component rerender.
+- If we just add the event listener inside the component function, it will add the same event listener many times whenever the component re-renders.
 ```js
     window.addEventListener("resize", () => {
         changeSize();
@@ -935,7 +938,7 @@ import { useEffect, useState } from "react";
     }
 ```
 
-- Thats why we can add event listener inside the useEffect with a cleanup function like this -
+- That's why we can add the event listener inside the useEffect with a cleanup function like this:
 ```js
 useEffect(() => {
         window.addEventListener("resize", changeSize);
@@ -954,8 +957,8 @@ useEffect(() => {
 ```
 
 
-- Cleanup return functuin will run when we unmount the component.
-- [Resize Componen](./website/my-react-app/src/ResizeText.jsx);
+- The cleanup return function will run when we unmount the component.
+- [Resize Component mini project](./website/my-react-app/src/ResizeText.jsx);
 
 ## Digital clock - Mini project
 - [Code Here](./website/my-react-app/src/Clock.jsx);
@@ -964,5 +967,98 @@ useEffect(() => {
 
 ## useContext - hook
 - It can be used together with the useState Hook to share state between deeply nested components more easily than with useState alone.
-- Because if this we dont have to pass props to access parennt and child component value;
+- Because of this, we don't have to pass props to access parent and child component values.
+
+### Explanaton with example
+- If we make box div components nested inside each other from `ComponentA` to `ComponentD` like this:
+<hr>
+<img width="100%" src="../readmeAssets/Screenshot 2024-05-06 200355.png"/>
+- if we make a state variable in `ComponentA` for the user and want that variable in `ComponentD`.
+
+```js
+const [user, setUser] = useState("Manik");
+
+    return (
+        <div className="box">
+            <h1>Component A</h1>
+            <h2>{`Hello ${user}`}</h2>
+            <ComponentB/>
+        </div>
+    )
+```
+- **We have two ways to do that :**
+1. Using props - 
+- We have to pass the variable by props from each component `a -> b -> c -> d`
+```js
+function ComponentD ({name}){
+    return (
+        <div className="box">
+            <h1>Component D</h1>
+            <h2>{name}</h2>
+        </div>
+    )
+}
+```
+- Passing props each component like this is called props drilling.
+
+2. Using useContext hook -
+- useContext hooks help us to share values between deeply nested components more easily than props.
+- Firstly, we have to go to the value provider component and import createContext from react.
+```js
+import { useState, createContext } from "react";
+```
+- Then we have to create a variable for createContext outside the component function and export it.
+```js
+export const UserContext = createContext();
+
+```
+- Then we have to wrap the required children components within the below special provider component made using the context variable we made like this.
+```js
+return (
+        <div className="box">
+            <h1>Component A</h1>
+            <h2>{`Hello ${user}`}</h2>
+
+            // special provider component
+            <UserContext.Provider value={user}>
+                <ComponentB/>
+            </UserContext.Provider>
+            
+            <button onClick={changeName}>Change</button>
+
+        </div>
+    )
+```
+
+- After that, we will go to the child component where we want the provider/parent component value.
+- We have to import useContext from react and the context variable we made from the provider (parent) component.
+```js
+import { useContext } from "react";
+import { UserContext } from "./ComponentA.jsx";
+```
+- Then we have to create a variable with useContext and imported context from the provider inside the component function like this:
+```js
+import { useContext } from "react";
+import { UserContext } from "./ComponentA.jsx";
+
+function ComponentD (){
+
+// making variable
+    const user = useContext(UserContext);
+
+    return (
+        <div className="box">
+            <h1>Component D</h1>
+            //using that variable
+            <h2>{user}</h2>
+        </div>
+    )
+}
+
+export default ComponentD;
+```
+<hr>
+<img width="100%" src="../readmeAssets/Screenshot 2024-05-06 211427.png"/>
+
+- We can get the provider value inside any and inside as many childrens using the same method.
 

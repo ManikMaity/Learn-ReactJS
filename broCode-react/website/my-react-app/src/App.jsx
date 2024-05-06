@@ -8,9 +8,9 @@ function App() {
 
   return(
     <>
-      {/* <UseEffectExample/> */}
-      {/* <ResizeText/> */}
-      {/* <DigitalClock/> */}
+      <UseEffectExample/>
+      <ResizeText/>
+      <DigitalClock/>
       <UseContextExample/>
 
     </>

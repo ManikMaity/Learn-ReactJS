@@ -13,3 +13,4 @@
 |**Day 05**|Bro Code Channel|<ul><li>onChange - event handler</li><li>Updater Function</li><li>Update Objects in state</li></ul>|Made color picker mini project|
 |**Day 06**|Bro Code Channel|<ul><li>Update Array/List Items in state</li><li>Update Array Of Objects in state</li></ul>|Made a simlpe todo and Add phone list |
 |**Day 07**|Bro Code Channel|<ul><li>Todo app project</li><li>Deploy React Project</li></ul>|Nothing|
+|**Day 08**|Bro Code Channel|<ul><li>useEffect React Hook</li><li>Digital clock - Mini project</li><li>useContext - hook</li></ul>|Made digital clock, Window resize text|
