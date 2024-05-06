@@ -1,5 +1,11 @@
 # Learning ReactJS
-## Resource📖
+This repository contains code for my React.js learning journey, including the codes from my 30-days Reactjs learning challenge.
+
+## My notes 📝
+- [Bro Code React Video Notes](./broCode-react/README.md)
+
+
+## Resources📖
  - [Bro Code Channel Video](https://youtu.be/CgkZ7MvWUAA?si=S6yKIIdnOrdAkXYc)
  - [React.dev](https://react.dev/learn)
 
