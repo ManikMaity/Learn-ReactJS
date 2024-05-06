@@ -39,6 +39,21 @@ body{
   margin-bottom: 5px;
 }
 
+.card button{
+  padding: 8px 10px;
+  border-radius: 5px;
+  width: 100%;
+  margin: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px solid #004e7f;
+  color: white;
+}
+
+.card button:hover{
+  background-color: #004e7f;
+}
+
 input[type="radio"]{
   width: min-content;
 }
@@ -340,4 +355,11 @@ ul.task-list{
 .list-heading button{
   position: absolute;
   right: 15px;
+}
+
+.box{
+  border: 2px solid #fff;
+  margin: 10px;
+  color:whitesmoke;
+  padding: 10px;
 }

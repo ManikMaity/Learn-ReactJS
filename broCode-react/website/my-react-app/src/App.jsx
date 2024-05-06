@@ -1,18 +1,18 @@
-import UpdateArrOfObjExample from "./UpdateArrOfObjExample.jsx"
-import UpdateListStateExample from "./updateListStateExample.jsx"
-import TodoList from "./TodoList.jsx"
-
+import DigitalClock from "./DigitalClock.jsx"
+import ResizeText from "./ResizeText.jsx"
+import UseContextExample from "./UseContextExample.jsx"
+import UseEffectExample from "./UseEffectExample.jsx"
 
 
 function App() {
 
   return(
     <>
-    {/* <UpdateListStateExample/> */}
-    <br></br>
-    {/* <UpdateArrOfObjExample/> */}
-    <br />
-    <TodoList/>
+      {/* <UseEffectExample/> */}
+      {/* <ResizeText/> */}
+      {/* <DigitalClock/> */}
+      <UseContextExample/>
+
     </>
   )
 }

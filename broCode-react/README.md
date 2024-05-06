@@ -863,3 +863,106 @@ const handleTaskDown = (i) => {
 - This will convert our whole react project to HTML, CSS, and JS code files.
 - This will create a `dist` folder with code files and assets inside.
 - We can deploy the `dist` folder on Netlify manually to deploy the project.
+
+## useEffect React Hook
+- The useEffect Hook allows you to perform side effects in your components.
+- For example useEffect do some codes when component re-render, when state value change., etc.
+```js
+useEffect(<function>, <dependency>)
+```
+### Uses 
+- Event listener
+- DOM Manipulation
+- Subcriptions (realtime update)
+- Fetching data from API
+- Cleanup unmount componnent.
+
+**Mounting** - Adding a component to the DOM.
+**Unmounting**  - Removing a component to the DOM.
+
+### useEffect Explanation - 
+- Firstly we have to import the useEffect from react.
+```js
+import { useEffect, useState } from "react";
+```
+- Then we can use useEffect like this incide our component function
+```js
+  useEffect(() => {
+    document.title = `Count ${count}`;
+  });
+```
+- Above code will change the website title whenever count update.
+- We can set dependencies by passing a array after the callback inside useEffect.
+- if we pass [] empty array that mean the use effect callback run once.
+```js
+  useEffect(() => {
+    document.title = `Count ${count}`;
+  }, []);
+```
+- If we pass count inside that array that means useEffect callback only if count inside array change.
+- That is why in the below code the title will not update on change color even we pass color inside the callback;
+```js
+  const [count, setCount] = useState(0);
+  const [color, setColor] = useState("#317a4c")
+
+  useEffect(() => {
+    document.title = `Count ${count}, Color ${color}`;
+  }, [count]);
+
+  const changeColor = () => {
+    setColor(c => c == "#317a4c" ? "#453461" : "#317a4c");
+  }
+```
+- But if we pass the color in the useEffect array the title will update on change color.
+```js
+  useEffect(() => {
+    document.title = `Count ${count}, Color ${color}`;
+  }, [count,  color]);
+
+```
+
+### Mini project - windown resize text
+- If we just add the event listener inside the componet function it will add same event listener many time whenever component rerender.
+```js
+    window.addEventListener("resize", () => {
+        changeSize();
+        console.log("event listener added")
+    })
+
+    function changeSize () {
+        setHeightSize(window.innerHeight);
+        setWidthSize(window.innerWidth)
+    }
+```
+
+- Thats why we can add event listener inside the useEffect with a cleanup function like this -
+```js
+useEffect(() => {
+        window.addEventListener("resize", changeSize);
+        console.log("Added event")
+
+        return () => {
+            window.removeEventListener("resize", changeSize);
+            console.log("event removed")
+        }
+    }, [])
+
+    function changeSize () {
+        setHeightSize(window.innerHeight);
+        setWidthSize(window.innerWidth)
+    }
+```
+
+
+- Cleanup return functuin will run when we unmount the component.
+- [Resize Componen](./website/my-react-app/src/ResizeText.jsx);
+
+## Digital clock - Mini project
+- [Code Here](./website/my-react-app/src/Clock.jsx);
+
+### In useEffect hooks section - I didnt fully understood cleanup function.
+
+## useContext - hook
+- It can be used together with the useState Hook to share state between deeply nested components more easily than with useState alone.
+- Because if this we dont have to pass props to access parennt and child component value;
+
