@@ -1062,3 +1062,74 @@ export default ComponentD;
 
 - We can get the provider value inside any and inside as many childrens using the same method.
 
+## useRef - hook
+- The useRef Hook allows you to persist values between renders. It can be used to store a mutable value that does not cause a re-render when updated. It can be used to access a DOM element directly.
+- It stores value like useState but dont re-render on value change
+
+### Need 
+- We can use useState but useState re-render the component every time the state value change. We can see in this example- 
+```js
+    const [num, setNum] = useState(0);
+    useEffect(() => {
+        console.log("Render");
+    })
+
+    return (
+        <div className="card">
+            <button onClick={() => {setNum(n => n + 1)}}>Click {num}</button>
+        </div>
+    )
+```
+- The useEffect will print "Render" when the component re-render.
+
+-Thats why we have to useRef.
+
+### How to use 
+- We have to make a constant with useRef function like this incide the component func -
+```js
+const ref = useRef();
+```
+- useRef returns a obj with one property `current` and we can set `current` by passing value in use effect function.
+```js
+function UseRefExample (){
+    const ref = useRef(0);
+    useEffect(() => {
+        console.log("Render");
+    })
+    return (
+        <div className="card">
+            <button onClick={() => {ref.current++; console.log(ref.current)}}>Click</button>
+        </div>
+    )
+}
+
+```
+- Now when we click the button the ref value change and print but component not re-render.
+- We can use useRef to store any html elemnet like this by passing null fistly in ref method then in the html element using the ref attribute to the contatant created.
+
+```js
+const input = useRef(null);
+return (
+        <div className="card">
+            <input type="text" name="" id="" ref={input}/>
+            <button>Click</button>
+        </div>
+    )
+```
+- Now we can change the ref input to change the html element without re-render.
+```js
+// Chnage the input bgcolor to green and give focus without component re-render.
+const handleClick = () => {
+        input.current.focus();
+        input.current.style.background = "lightgreen";
+    }
+
+    return (
+        <div className="card">
+            <input type="text" name="" id="" ref={input}/>
+            <button onClick={handleClick}>Click</button>
+        </div>
+    )
+````
+
+## StopWatch - Mini Project
