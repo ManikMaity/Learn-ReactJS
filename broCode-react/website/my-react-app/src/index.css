@@ -50,9 +50,6 @@ body{
   color: white;
 }
 
-.card button:hover{
-  background-color: #004e7f;
-}
 
 input[type="radio"]{
   width: min-content;
@@ -362,4 +359,48 @@ ul.task-list{
   margin: 10px;
   color:whitesmoke;
   padding: 10px;
+}
+
+.stopwatch-card{
+  margin: 10px 10px;
+  background-color: #dddddd;
+  border-width: 3px;
+  border-color: #2e5a42;
+  box-shadow: 5px 5px 10px #000000;
+  color: #234131;
+}
+
+.stopwatch-card h1{
+  font-size: 3rem;
+  font-weight: bolder;
+  text-wrap: nowrap;
+}
+
+.stopwatch-card button{
+  background-color: #000000;
+  border: none;
+  font-size: 1rem;
+  padding: 12px 20px;
+  color: white;
+}
+
+.stopwatch-control .start-btn{
+  background-color: #2e5a42;
+}
+.stopwatch-control .stop-btn{
+  background-color: #2e4584;
+}
+.stopwatch-control .reset-btn{
+  background-color: #8b3131;
+
+}
+
+.stopwatch-control button:hover{
+  opacity: 0.8;
+}
+
+.stopwatch-control{
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
 }

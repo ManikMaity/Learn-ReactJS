@@ -1133,3 +1133,6 @@ const handleClick = () => {
 ````
 
 ## StopWatch - Mini Project
+- ### [Stop Watch Component Code](./website/my-react-app/src/StopWatch.jsx)
+- ### Preview
+<img width="100%" src="../readmeAssets/stopwatch-preview.png"/>
