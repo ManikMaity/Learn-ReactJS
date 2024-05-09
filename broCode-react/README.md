@@ -25,6 +25,8 @@
 - [useEffect React Hook](#useeffect-react-hook)
 - [Digital clock - Mini project](#digital-clock---mini-project)
 - [useContext - hook](#usecontext---hook)
+- [useRef - hook](#useref---hook)
+- [StopWatch - Mini Project](#stopwatch---mini-project)
 
 ## Points 
 - React works in JSX, which means JavaScript XML.
