@@ -1063,11 +1063,11 @@ export default ComponentD;
 - We can get the provider value inside any and inside as many childrens using the same method.
 
 ## useRef - hook
-- The useRef Hook allows you to persist values between renders. It can be used to store a mutable value that does not cause a re-render when updated. It can be used to access a DOM element directly.
-- It stores value like useState but dont re-render on value change
+- The useRef Hook allows you to persist values between renders. It can be used to store a mutable value that does not cause a re-render when updated. It can also be used to access a DOM element directly.
+- It stores a value like useState but doesn't re-render on value change.
 
 ### Need 
-- We can use useState but useState re-render the component every time the state value change. We can see in this example- 
+- We can use useState but useState re-renders the component every time the state value changes. We can see in this example:
 ```js
     const [num, setNum] = useState(0);
     useEffect(() => {
@@ -1080,16 +1080,15 @@ export default ComponentD;
         </div>
     )
 ```
-- The useEffect will print "Render" when the component re-render.
-
--Thats why we have to useRef.
+- The useEffect will print "Render" when the component re-renders.
+- That's why we have to use useRef.
 
 ### How to use 
-- We have to make a constant with useRef function like this incide the component func -
+- We have to make a constant with `useRef` function like this inside the component function:
 ```js
 const ref = useRef();
 ```
-- useRef returns a obj with one property `current` and we can set `current` by passing value in use effect function.
+- useRef returns an object with one property `current`, and we can set `current` by passing a value in the useRef function:
 ```js
 function UseRefExample (){
     const ref = useRef(0);
@@ -1104,8 +1103,8 @@ function UseRefExample (){
 }
 
 ```
-- Now when we click the button the ref value change and print but component not re-render.
-- We can use useRef to store any html elemnet like this by passing null fistly in ref method then in the html element using the ref attribute to the contatant created.
+- Now when we click the button, the ref value changes and prints, but the component does not re-render.
+- We can use useRef to store any HTML element like this by passing null initially in the useRef method, then using the ref attribute to the constant created in the HTML element:
 
 ```js
 const input = useRef(null);
@@ -1116,7 +1115,7 @@ return (
         </div>
     )
 ```
-- Now we can change the ref input to change the html element without re-render.
+- Now we can change the ref input to change the HTML element without re-rendering.
 ```js
 // Chnage the input bgcolor to green and give focus without component re-render.
 const handleClick = () => {

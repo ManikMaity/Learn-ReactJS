@@ -16,6 +16,8 @@ function DigitalClock (){
         }
     }, [])
 
+    
+
     return (
         <div className="card">
             <h2>{time}</h2>

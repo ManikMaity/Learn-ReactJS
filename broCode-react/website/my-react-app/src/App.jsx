@@ -1,5 +1,6 @@
 import UseRefExample from "./UseRefExample.jsx"
 import StopWatch from "./StopWatch.jsx"
+import DigitalClock from "./DigitalClock.jsx"
 
 function App() {
 
@@ -7,6 +8,7 @@ function App() {
     <>
       {/* <UseRefExample/> */}
       <StopWatch/>
+      <DigitalClock/>
     </>
   )
 }
