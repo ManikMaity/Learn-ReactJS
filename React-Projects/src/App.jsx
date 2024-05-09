@@ -1,10 +1,10 @@
-import TicTacToe from "./Components/TicTacToe/TicTacToe.jsx"
+import NasaImage from "./Components/Nasa-Image/NasaImage.jsx"
 
 function App() {
 
   return (
     <>
-     <TicTacToe/>
+     <NasaImage/>
     </>
   )
 }
