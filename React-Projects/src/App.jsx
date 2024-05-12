@@ -1,10 +1,11 @@
-import NasaImage from "./Components/Nasa-Image/NasaImage.jsx"
+import GymApp from "./Gym-App/GymApp.jsx"
+
 
 function App() {
 
   return (
     <>
-     <NasaImage/>
+    <GymApp/>
     </>
   )
 }
