@@ -7,6 +7,147 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.image-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    
+}
+
 button i{
     color: black;
+}
+
+.nasa-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+footer h2{
+    position: relative;
+    font-weight: 300;
+    z-index: 9;
+    padding: 10px 20px;
+}
+
+footer button{
+    z-index: 20;
+    margin-right: 20px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #ffffff50;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+footer{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    align-items: last baseline;
+    height: 100px;
+    justify-content: space-between;
+}
+
+footer .bg-gradient{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #000000, rgba(0, 0, 0, 0));
+    z-index: 2;
+}
+
+@keyframes rightToLeftFade {
+    from{
+        right: -500px;
+        opacity: 0;
+    }
+    to{
+        right: 0px;
+        opacity: 1;
+    }
+}
+
+.sidebar{
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    justify-self: end;
+    animation-name: rightToLeftFade;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+
+.bg-overlay{
+    position: absolute;
+    inset: 0;
+    background: #000;
+    opacity: 0.8;
+}
+
+.sidebar-content{
+    position: relative;
+    height: 100%;
+    width: 90%;
+    max-width: 800px;
+    max-height: 480px;
+    z-index: 15;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar{
+    width: 0px;
+}
+
+.sidebar-content h2, h3{
+    font-weight: 300;
+}
+
+.sidebar h3{
+    margin-top: 20px;
+}
+
+.sidebar p{
+    font-size: 0.9rem;
+    margin-top: 5px;
+    font-weight: 300;
+}
+
+.sidebar button{
+    position: relative;
+    background-color: #fff;
+    opacity: 1;
+    margin-top: 8px;
+    border-radius: 50px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 99;
+    border: none;
+}
+
+.loadingState{
+    display: grid;
+    place-content: center;
+    width: 100%;
+}
+
+.loadingState i{
+    font-size: 5rem;
+    opacity: 0.3;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
 }

@@ -7,6 +7,10 @@
   color: rgb(232, 232, 232);
 }
 
-body{
-  background-color: #171717;
+#root{
+  height: 100vh;
+  width: 100%;
+  background-color: #101314;
+  display: flex;
+  position: relative;
 }

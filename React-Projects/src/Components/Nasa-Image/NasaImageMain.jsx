@@ -1,9 +1,8 @@
-import EarthImg from "../Assets/earth-img.jpg"
 
-function NasaImageMain() {
+function NasaImageMain({showSidebar, data}) {
     return (
-        <div>
-            <img src={EarthImg} alt="" />
+        <div className="image-container" onClick={showSidebar}>
+            <img className="nasa-image" src={data?.url} alt="" />
         </div>
     )
 }
